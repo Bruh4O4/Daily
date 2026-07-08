@@ -5,11 +5,14 @@ body{
     display: flex;
 }
 
+button{
+    cursor: pointer;
+}
+
 header{
     background-color: #f9fff2;
     height: 100vh;
-    width: 12vw;
-    min-width: 200px;
+    width: 200px;
     position: fixed;
     top: 0px;
     display: flex;
@@ -23,19 +26,20 @@ h1{
     display: flex;
     flex-direction: column;
 }
-button{
-    background-color: #6b963a;
+.menu_butt{
     width: 60px;
     height: 60px;
     border-radius: 10px;
     margin: 15px;
-    cursor: pointer;
 }
-button>img{
+.menu_butt>img{
     width: 35px;
     height: 35px;
 }
-button:hover{
+.habbit_butt{
+    background-color: #6b963a;
+}
+.habbit_butt:hover{
     background-color: #cee6b3;
 }
 header>hr{
@@ -45,18 +49,18 @@ header>hr{
     border: none;
     border-radius: 3px;
 }
-#add_butt{
+.add_butt{
     background-color: #f9fff2;
     border: 2px solid #3d492d;
 }
-#add_butt:hover{
+.add_butt:hover{
     background-color: #ffffff;
 }
 
 main{
     width: calc(100% - 200px - 10vw);
     font-family: monospace;
-    margin: 5vw 8vw 5vw 20vw;
+    margin: 5vw 8vw 5vw calc(200px + 8vw);
 }
 
 #main_h{
@@ -77,6 +81,7 @@ h2{
     border-radius: 15px;
     display: flex;
     align-items: center;
+    flex-wrap: wrap;
     gap: 20px;
 }
 #prog>h2{
@@ -109,8 +114,22 @@ hr{
     border-radius: 15px;
     margin: 20px;
 }
+.day_h{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 h3{
     font-size: 24px;
+}
+.del_butt{
+    background-color: #f9fff2;
+    border: none;
+}
+.del_butt>img{
+    width: 35px;
+    height: 35px;
 }
 .day>hr{
     background-color: #3d492d;
