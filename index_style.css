@@ -22,7 +22,7 @@ header{
 h1{
     font-size: 48px;
 }
-#menu{
+.menu{
     display: flex;
     flex-direction: column;
 }
@@ -36,11 +36,14 @@ h1{
     width: 35px;
     height: 35px;
 }
+.menu_butt:hover{
+    background-color: #ffffff;
+}
+.menu_butt_active.habbit_butt{
+    background-color: #cee6b3;
+}
 .habbit_butt{
     background-color: #6b963a;
-}
-.habbit_butt:hover{
-    background-color: #cee6b3;
 }
 header>hr{
     background-color: #cee6b3;
@@ -52,9 +55,6 @@ header>hr{
 .add_butt{
     background-color: #f9fff2;
     border: 2px solid #3d492d;
-}
-.add_butt:hover{
-    background-color: #ffffff;
 }
 
 main{
