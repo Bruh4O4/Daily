@@ -5,6 +5,14 @@ const HABBIT_KEY = 'HABBIT_KEY'
 
 const page = {
     menu: document.querySelector('.menu'),
+    header: {
+        h: document.querySelector('.name'),
+        prog_days: document.querySelector('.prog_days')
+    },
+    content: {
+        days_box: document.querySelector('#days_box'),
+        next_day: document.querySelector('.day_next')
+    }
 }
 
 function loadData() {
@@ -20,8 +28,6 @@ function saveData() {
 }
 
 function rerenderMenu(activeHabbit) {
-    if(!activeHabbit) return;
-
     for(const habbit of habbits) {
         const existed = document.querySelector(`[habbit_id="${habbit.id}"]`)
         if(!existed){
@@ -46,9 +52,56 @@ function rerenderMenu(activeHabbit) {
     }
 }
 
+function renderHead(activeHabbit) {
+    page.header.h.innerText = activeHabbit.name;
+    page.header.prog_days.innerText = `${activeHabbit.days.length} из ${activeHabbit.target}`;
+}
+
+function rerenderDays(activeHabbit) {
+    page.content.days_box.innerHTML = '';
+
+    for(const day in activeHabbit.days){
+        const el = document.createElement('div');
+        el.classList.add('day');
+        el.innerHTML = `<div class="day_h">
+                    <h3>День ${Number(day) + 1}</h3>
+                    <button class="del_butt">
+                        <img src="./img/delete.svg" alt="">
+                    </button>
+                </div>
+                <hr>
+                <div class="day_comm">
+                    ${activeHabbit.days[day].comment}
+                </div>`;
+        
+        page.content.days_box.appendChild(el);
+    }
+    
+    const el = document.createElement('div');
+    el.classList.add('day');
+    el.innerHTML = `<div class="day_h">
+                    <h3 class="next_day">День ${activeHabbit.days.length + 1}</h3>
+                    <button class="del_butt">
+                        <img src="./img/delete.svg" alt="">
+                    </button>
+                </div>
+                <hr>
+                <div class="day_comm">
+                    <textarea name="comment" id="comm" placeholder="..." maxlength="250"></textarea>
+                    <button id="add_day">Добавить день</button>
+                </div>`;
+    
+    page.content.days_box.appendChild(el);
+
+}
+
 function rerender(activeHabbitId) {
     const activeHabbit = habbits.find(habbit => habbit.id === activeHabbitId);
+    if(!activeHabbit) return;
+
     rerenderMenu(activeHabbit);
+    renderHead(activeHabbit);
+    rerenderDays(activeHabbit);
 }
 
 (() => {

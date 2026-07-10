@@ -73,7 +73,7 @@ main{
 }
 h2{
     font-size: 48px;
-    margin: 0;
+    margin: 0 0 20px 0;
 }
 #prog{
     padding: 0px 20px;
@@ -104,7 +104,7 @@ hr{
     margin-top: 4vw;
     display: flex;
     flex-wrap: wrap;
-    gap: 125px;
+    gap: 115px;
 }
 .day{
     background-color: #f9fff2;
