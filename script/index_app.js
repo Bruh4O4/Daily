@@ -65,7 +65,7 @@ function rerenderDays(activeHabbit) {
         el.classList.add('day');
         el.innerHTML = `<div class="day_h">
                     <h3>День ${Number(day) + 1}</h3>
-                    <button class="del_butt">
+                    <button class="del_butt" onclick="delDay(${activeHabbit.id}, ${day})">
                         <img src="./img/delete.svg" alt="">
                     </button>
                 </div>
@@ -81,15 +81,12 @@ function rerenderDays(activeHabbit) {
     el.classList.add('day');
     el.innerHTML = `<div class="day_h">
                     <h3 class="next_day">День ${activeHabbit.days.length + 1}</h3>
-                    <button class="del_butt">
-                        <img src="./img/delete.svg" alt="">
-                    </button>
                 </div>
                 <hr>
-                <div class="day_comm">
-                    <textarea name="comment" id="comm" placeholder="..." maxlength="250"></textarea>
+                <form class="day_comm" onsubmit="addDays(event)" data-habbit-id="${activeHabbit.id}">
+                    <textarea name="comment" class="comm" placeholder="..." maxlength="250"></textarea>
                     <button id="add_day">Добавить день</button>
-                </div>`;
+                </form>`;
     
     page.content.days_box.appendChild(el);
 
@@ -104,7 +101,48 @@ function rerender(activeHabbitId) {
     rerenderDays(activeHabbit);
 }
 
+function addDays(event)  {
+    event.preventDefault();
+    const form = event.target;
+
+    const data = new FormData(form);
+    const comment = data.get('comment');
+    
+    form['comment'].classList.remove('empty');
+    if(!comment){
+        form['comment'].classList.add('empty');
+    }
+
+    
+    habbits = habbits.map(habbit => {
+        if(habbit.id == form.dataset.habbitId){
+            return {
+                ...habbit,
+                days: habbit.days.concat([{ comment }])
+            }
+        }
+        return habbit;
+    });
+    form['comment'].value = '';
+
+    rerender(Number(form.dataset.habbitId));
+    saveData();
+}
+
+function delDay(activeHabbitId, commIndex) {
+    habbits = habbits.map(habbit => {
+        if(habbit.id === activeHabbitId){
+            habbit.days.splice(commIndex, 1);
+        }
+        return habbit;
+    })
+
+    console.log(habbits);
+    rerender(activeHabbitId);
+    saveData();
+}
+
 (() => {
     loadData();
-    rerender(habbits[0].id)
+    rerender(habbits[0].id);
 })();

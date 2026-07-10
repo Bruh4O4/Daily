@@ -100,7 +100,6 @@ hr{
 }
 
 #days_box{
-    width: 100%;
     margin-top: 4vw;
     display: flex;
     flex-wrap: wrap;
@@ -149,7 +148,10 @@ h3{
     align-items: center;
     gap: 20px;
 }
-#comm{
+form{
+    height: 100%;
+}
+.comm{
     width: 260px;
     height: 100%;
     font-size: 18px;
@@ -157,6 +159,9 @@ h3{
     border: 3px solid #cee6b3;
     border-radius: 10px;
     resize: none;
+}
+.empty{
+    border: 3px solid red;
 }
 #add_day{
     background-color: #cee6b3;
