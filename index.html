@@ -14,7 +14,7 @@
 
         <hr>
 
-        <button class="add_butt menu_butt">
+        <button class="add_butt menu_butt" onclick="showAdding()">
             <img src="./img/Add.svg" alt="+">
         </button>
     </header>
@@ -32,7 +32,35 @@
 
         <section id="days_box">
         </section>
-            
+        
+        <section class="cover closed">
+            <div class="cover_filling">
+                <button class="close" onclick="closeAdding()">
+                    <img src="./img/cross.svg" alt="">
+                </button>
+
+                <h2>Новая привычка</h2>
+                <hr>
+                <form class="new_habbit" onsubmit="adding(event)">
+                    <input 
+                        type="text"
+                        id="habbit_name"
+                        name="habbit_name"
+                        placeholder="Название"
+                        required
+                    >
+                    <input 
+                        type="number"
+                        id="goal"
+                        name="goal"
+                        placeholder="Цель (кол-во дней)"
+                        required
+                    >
+
+                    <button class="add">Добавить</button>
+                </form>
+            </div>
+        </section>
     </main>
     <script src="./script/index_app.js"></script>
 </body>

@@ -142,6 +142,39 @@ function delDay(activeHabbitId, commIndex) {
     saveData();
 }
 
+function showAdding() {
+    document.querySelector('.cover').classList.remove('closed');
+}
+function closeAdding() {
+    document.querySelector('.cover').classList.add('closed');
+}
+
+function adding(event) {
+    event.preventDefault();
+    const form = event.target;
+
+    const data = new FormData(form);
+    const comm = data.get('habbit_name');
+    const goal = Number(data.get('goal'));
+
+    habbits =[
+        ...habbits,
+        {
+            "id": habbits.length + 1,
+            "name": comm,
+            "target": goal,
+            "days": []
+        }
+    ];
+    
+    form['habbit_name'].value = '';
+    form['goal'].value = '';
+    
+    rerender(habbits[0].id);
+    closeAdding();
+    saveData();
+}
+
 (() => {
     loadData();
     rerender(habbits[0].id);

@@ -103,7 +103,7 @@ hr{
     margin-top: 4vw;
     display: flex;
     flex-wrap: wrap;
-    gap: 115px;
+    justify-content: space-between;
 }
 .day{
     background-color: #f9fff2;
@@ -173,5 +173,71 @@ form{
 }
 #add_day:hover{
     background-color: #3d492d;
+    color: #f9fff2;
+}
+
+.cover{
+    background: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.closed{
+    display: none;
+}
+.cover_filling{
+    background-color: #cee6b3;
+    padding: 50px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+}
+.close{
+    background: none;
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    border: none;
+    position: absolute;
+    top: 30px;
+    right: 30px;
+}
+.new_habbit{
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 35px;
+}
+input{
+    background-color: #f9fff2;
+    width: 100%;
+    height: 40px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 10px;
+}
+input:active{
+    background-color: #ffffff;
+}
+::placeholder{
+    font-size: 18px;
+}
+.add{
+    background-color: #f9fff2;
+    color: #3d492d;
+    width: 200px;
+    height: 50px;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+}
+.add:hover{
+    background-color: #6b963a;
     color: #f9fff2;
 }
