@@ -54,7 +54,12 @@ function rerenderMenu(activeHabbit) {
 
 function renderHead(activeHabbit) {
     page.header.h.innerText = activeHabbit.name;
-    page.header.prog_days.innerText = `${activeHabbit.days.length} из ${activeHabbit.target}`;
+    if(activeHabbit.days.length < activeHabbit.target) {
+        page.header.prog_days.innerText = `${activeHabbit.days.length} из ${activeHabbit.target}`;    
+    } else {
+        page.header.prog_days.innerText = `Цель достигнута!`;
+    }
+    
 }
 
 function rerenderDays(activeHabbit) {
@@ -77,19 +82,20 @@ function rerenderDays(activeHabbit) {
         page.content.days_box.appendChild(el);
     }
     
-    const el = document.createElement('div');
-    el.classList.add('day');
-    el.innerHTML = `<div class="day_h">
-                    <h3 class="next_day">День ${activeHabbit.days.length + 1}</h3>
-                </div>
-                <hr>
-                <form class="day_comm" onsubmit="addDays(event)" data-habbit-id="${activeHabbit.id}">
-                    <textarea name="comment" class="comm" placeholder="..." maxlength="250"></textarea>
-                    <button id="add_day">Добавить день</button>
-                </form>`;
-    
-    page.content.days_box.appendChild(el);
-
+    if(activeHabbit.days.length < activeHabbit.target) {
+        const el = document.createElement('div');
+        el.classList.add('day');
+        el.innerHTML = `<div class="day_h">
+                        <h3 class="next_day">День ${activeHabbit.days.length + 1}</h3>
+                    </div>
+                    <hr>
+                    <form class="day_comm" onsubmit="addDays(event)" data-habbit-id="${activeHabbit.id}">
+                        <textarea name="comment" class="comm" placeholder="..." maxlength="250"></textarea>
+                        <button id="add_day">Добавить день</button>
+                    </form>`;
+        
+        page.content.days_box.appendChild(el);
+    }
 }
 
 function rerender(activeHabbitId) {
