@@ -102,8 +102,9 @@ hr{
 #days_box{
     margin-top: 4vw;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    overflow: auto;
+    scrollbar-width: none;
+    gap: 50px;
 }
 .day{
     background-color: #f9fff2;
@@ -113,6 +114,10 @@ hr{
     padding: 25px;
     border-radius: 15px;
     margin: 20px;
+    flex: 0 0 auto;
+}
+.last_day{
+    margin-right: 35%;
 }
 .day_h{
     width: 100%;

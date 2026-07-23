@@ -84,7 +84,7 @@ function rerenderDays(activeHabbit) {
     
     if(activeHabbit.days.length < activeHabbit.target) {
         const el = document.createElement('div');
-        el.classList.add('day');
+        el.classList.add('day', 'last_day');
         el.innerHTML = `<div class="day_h">
                         <h3 class="next_day">День ${activeHabbit.days.length + 1}</h3>
                     </div>
